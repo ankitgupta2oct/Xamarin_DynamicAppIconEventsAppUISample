@@ -4,15 +4,8 @@ using System.Runtime.CompilerServices;
 
 namespace EventApp.ViewModels
 {
-    public class EventViewModel : INotifyPropertyChanged
+    public class EventViewModel
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public void Update([CallerMemberName] string property = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
-        }
-
         public ObservableCollection<Event> Events { get; private set; }
 
         public EventViewModel()
