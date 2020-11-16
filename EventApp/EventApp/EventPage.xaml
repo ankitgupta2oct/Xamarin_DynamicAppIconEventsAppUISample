@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="EventApp.EventPage" NavigationPage.HasNavigationBar="False">
+        <Grid RowDefinitions="Auto,Auto,*,Auto" RowSpacing="0" BackgroundColor="#f6f6f6">
+            <Grid Padding="25,25,25,0" RowSpacing="25" RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="Auto,*,Auto"
+                  ColumnSpacing="15">
+                <!--Image View-->
+                <pancakeview:PancakeView Margin="-25" Grid.RowSpan="4" Grid.ColumnSpan="3" IsClippedToBounds="True" CornerRadius="0,0,40,40">
+                    <Image Source="Background.jpg" Aspect="AspectFill"/>
+                </pancakeview:PancakeView>
+
+                <!--Profile Detail-->
+                <Frame IsClippedToBounds="True" HasShadow="False" HeightRequest="50" WidthRequest="50" CornerRadius="25" Padding="0">
+                     <Image Source="LeomarisReyes.jpg" Aspect="AspectFill"/>
+                </Frame>
+
+                <Label Grid.Column="1" VerticalOptions="Center" TextColor="Black" HorizontalOptions="StartAndExpand">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="15 Nov 2020&#10;" FontSize="14"/>
+                            <Span Text="Alina" FontAttributes="Bold" FontSize="20"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <!--Event Count-->
+                <Label Grid.ColumnSpan="3" Grid.Row="1" TextColor="Black" FontAttributes="Bold" FontSize="25" Text="Find Amazing Events"/>
+                <Label Grid.ColumnSpan="3" Margin="0,-25,0,0" Grid.Row="2" TextColor="Black" FontSize="15" Text="235 events around you"/>
+
+                <!--Search-->
+                <Frame Grid.Row="3" Grid.ColumnSpan="2" Padding="10" HasShadow="False" CornerRadius="15" HeightRequest="20">
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="Search_wip" BackgroundColor="Transparent" WidthRequest="20" HeightRequest="20" Aspect="AspectFit"/>
+                        <Label Text="Find Events" FontSize="17" TextColor="Gray" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand"/>
+                        <Image Source="Mic_WIP" WidthRequest="18" HeightRequest="18" Aspect="AspectFit"/>
+                    </StackLayout>
+                </Frame>
+
+                <!--Filter-->
+                <ImageButton Grid.Row="3" Grid.Column="2" Source="Filter" WidthRequest="50" HeightRequest="50"
+                       Aspect="AspectFit"/>
+            </Grid>
+
+            <!--Event Types-->
+            <ScrollView Margin="25,20" Grid.Row="1" Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                <StackLayout Spacing="15" Orientation="Horizontal">
+                    <Button Text="All" CornerRadius="10" Padding="20,10" TextColor="Black" FontSize="15" HorizontalOptions="Start" BackgroundColor="#e1e1e1"/>
+                    <Button Text="Busniess" CornerRadius="10"  Padding="20,10" TextColor="Black" FontSize="15" HorizontalOptions="Start" BackgroundColor="#e1e1e1"/>
+                    <Button Text="Fashion" CornerRadius="10" Padding="20,10" TextColor="Black" FontSize="15" HorizontalOptions="Start" BackgroundColor="#e1e1e1"/>
+                    <Button Text="Music" CornerRadius="10" Padding="20,10" TextColor="Black" FontSize="15" HorizontalOptions="Start" BackgroundColor="#e1e1e1"/>
+                    <Button Text="Art" CornerRadius="10" Padding="20,10" TextColor="Black" FontSize="15" HorizontalOptions="Start" BackgroundColor="#e1e1e1"/>
+                    <Button Text="Programming" CornerRadius="10" Padding="20,10" TextColor="Black" FontSize="15" HorizontalOptions="Start" BackgroundColor="#e1e1e1"/>
+                </StackLayout>
+            </ScrollView>
+
+            <!--Event List-->
+            <CollectionView Margin="25,0" Grid.Row="2"
+                            ItemsSource="{Binding Events}" VerticalScrollBarVisibility="Never"
+                            SelectionChanged="SelectionChanged" SelectionMode="Single">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame IsClippedToBounds="True" Padding="0" HasShadow="False" CornerRadius="20">
+                            <Grid RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="Auto,*,Auto">
+                                <Image Source="{Binding ImageName}" HeightRequest="170" Aspect="AspectFill" Grid.ColumnSpan="3"/>
+                                <Image Grid.Column="2" Source="_Heart" Margin="0,10,10,0" WidthRequest="35" HeightRequest="35" VerticalOptions="Start" HorizontalOptions="End"/>
+
+                                <Frame Grid.Row="1" Grid.Column="2" HorizontalOptions="End" Margin="0,-35,10,0" Padding="10,7"
+                                       BackgroundColor="#c7e7ff" HasShadow="False" CornerRadius="10">
+                                    <Label VerticalTextAlignment="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="20&#10;" TextColor="Tomato" FontAttributes="Bold"/>
+                                                <Span Text="oct." FontSize="15"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </Frame>
+
+                                <Label Grid.Row="2" Margin="10,0" Grid.ColumnSpan="3" VerticalTextAlignment="Center" FontAttributes="Bold" TextColor="Black"  FontSize="17" Text="{Binding Name}"/>
+
+                                <Image Grid.Row="3" Margin="10,0,0,10" Source="Location" HeightRequest="30" WidthRequest="30" HorizontalOptions="Start" Aspect="AspectFit"/>
+                                <Label Grid.Row="3" Margin="0,0,0,10" Grid.Column="1" Grid.ColumnSpan="2" VerticalTextAlignment="Center" TextColor="DarkBlue"  FontSize="15" Text="{Binding Venue}"/>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!--Bottom View-->
+            <StackLayout Padding="40,10,30,10" Grid.Row="3" Orientation="Horizontal" BackgroundColor="White">
+                <ImageButton Margin="0,-30,0,0" CornerRadius="45" Padding="10" BackgroundColor="White" Source="Menu" WidthRequest="90" HeightRequest="90" Aspect="AspectFit" VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
+                <Image Source="Email" WidthRequest="40" HeightRequest="40" Aspect="AspectFit" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
+                <Image Source="Bell" WidthRequest="40" HeightRequest="40" Aspect="AspectFit" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"/>
+                <Frame IsClippedToBounds="True" HasShadow="False" HeightRequest="40" WidthRequest="40" CornerRadius="20"
+                       Padding="0" VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
+                     <Image Source="LeomarisReyes.jpg" Aspect="AspectFill"/>
+                </Frame>
+            </StackLayout>
+        </Grid>
+</ContentPage>

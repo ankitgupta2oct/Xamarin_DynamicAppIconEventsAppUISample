@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="EventApp.EventDetail" Title="Event Detail">
+    <ScrollView VerticalScrollBarVisibility="Never" BackgroundColor="White">
+        <Grid RowDefinitions="Auto,Auto,*,Auto">
+            <!--Image View-->
+            <pancakeview:PancakeView IsClippedToBounds="True" CornerRadius="0,0,40,40">
+                <Image Source="Model" Aspect="AspectFill" HeightRequest="300"/>
+            </pancakeview:PancakeView>
+            <Image Margin="0,20,20,0" Source="_Heart" WidthRequest="35" HeightRequest="35" VerticalOptions="Start" HorizontalOptions="End"/>
+
+            <!--Event Description-->
+            <Frame Grid.Row="1" Padding="20" Margin="30,-50,30,0" CornerRadius="20" >
+
+                <Grid RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="Auto,*">
+                    <Frame Padding="10" BackgroundColor="#c7e7ff" HasShadow="False" CornerRadius="12" Grid.RowSpan="2">
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="20&#10;" TextColor="Tomato" FontAttributes="Bold"/>
+                                    <Span Text="oct." FontSize="15"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </Frame>
+
+                    <Label Grid.Column="1" TextColor="Black" FontAttributes="Bold" FontSize="20" Text="Fashion Fair 2020"/>
+                    <Label Grid.Row="1" Grid.Column="1" FontSize="14" FontAttributes="Bold" TextColor="Gray" Text="by LMD"/>
+
+                    <Image Grid.Row="2" HeightRequest="30" WidthRequest="30" HorizontalOptions="Start" Aspect="AspectFit" Source="Clock" />
+                    <Image Grid.Row="3" Source="Location" HeightRequest="30" WidthRequest="30" HorizontalOptions="Start" Aspect="AspectFit"/>
+
+                    <Label Grid.Row="2" Margin="-15,0,0,0" VerticalTextAlignment="Center" Grid.Column="1" TextColor="DarkBlue"  FontSize="15" Text="11.00am - 10.00pm"/>
+                    <Label Grid.Row="3" Margin="-15,0,0,0" VerticalTextAlignment="Center" Grid.Column="1" TextColor="DarkBlue"  FontSize="15" Text="72 S Linden Ave, San Francisco"/>
+                </Grid>
+            </Frame>
+
+            <!--Event Detail-->
+            <Grid Margin="30" Grid.Row="2" RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="Auto,*,Auto">
+                <Label TextColor="Black" Grid.ColumnSpan="3" Text="Details" FontSize="17" FontAttributes="Bold"/>
+                <Label Grid.Row="1" Grid.ColumnSpan="3" FontSize="15" TextColor="Gray" LineBreakMode="TailTruncation" MaxLines="2" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." FontAttributes="Bold"/>
+                <Label Grid.Row="2" Grid.ColumnSpan="3" FontSize="15" FontAttributes="Bold" TextColor="DarkBlue" Text="Read More"/>
+                <StackLayout Grid.Row="3" VerticalOptions="Center" Orientation="Horizontal">
+                    <Frame HeightRequest="40" IsClippedToBounds="True" HasShadow="False" WidthRequest="40" CornerRadius="20" Padding="0" BackgroundColor="BlueViolet">
+                        <Image Source="LeomarisReyes.jpg" Aspect="AspectFill"/>
+                    </Frame>
+                    <Frame HeightRequest="40" Margin="-20,0,0,0" IsClippedToBounds="True" HasShadow="False" WidthRequest="40" CornerRadius="20" Padding="0" BackgroundColor="BlueViolet">
+                        <Image Source="LeomarisReyes.jpg" Aspect="AspectFill"/>
+                    </Frame>
+                    <Frame HeightRequest="40" Margin="-20,0,0,0" IsClippedToBounds="True" HasShadow="False" WidthRequest="40" CornerRadius="20" Padding="0" BackgroundColor="BlueViolet">
+                        <Image Source="VictorR.jpg" Aspect="AspectFill"/>
+                    </Frame>
+                </StackLayout>
+
+                <Label Grid.Row="3" Grid.Column="1" Text="Interested" TextColor="Tomato" FontSize="15"
+                       HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+
+                <ImageButton Grid.Row="3" Grid.Column="2" BackgroundColor="#dddddd" CornerRadius="17" VerticalOptions="Center" WidthRequest="50" HeightRequest="50" Source="Arr" Padding="10" Aspect="AspectFit"/>
+            </Grid>
+
+            <!--Ticket Price-->
+            <pancakeview:PancakeView Grid.Row="3" CornerRadius="20,20,0,0" Padding="30,20" BackgroundColor="#dddddd">
+                <StackLayout Orientation="Horizontal">
+                    <Label VerticalOptions="Center" HorizontalOptions="StartAndExpand">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="$59.90&#10;" FontAttributes="Bold" FontSize="25" TextColor="#fe8b87"/>
+                                <Span Text="Per participant" FontSize="15" TextColor="#fe8b87"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Button Text="Get a Ticket" TextColor="White" CornerRadius="15" FontSize="14" FontAttributes="Bold" Padding="15" BackgroundColor="#4c4baa"
+                            VerticalOptions="Center"/>
+                </StackLayout>
+            </pancakeview:PancakeView>
+        </Grid>
+    </ScrollView>
+</ContentPage>
