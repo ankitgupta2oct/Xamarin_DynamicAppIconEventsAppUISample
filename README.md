@@ -2,7 +2,7 @@
 
 
 <p align="center">
-<img src="https://github.com/ankitgupta2oct/EventsAppUISample/blob/main/Images/EventApp.jpg" height="540" width="720"/>
+<img src="https://github.com/ankitgupta2oct/EventsAppUISample/blob/main/Images/EventApp.gif" height="540" width="720"/>
 </p>
 
 UI challenge based on <br/>
